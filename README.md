@@ -17,7 +17,7 @@ xcodegen generate
 open DJ1H.xcodeproj
 ```
 
-Select an Apple Developer Team in Xcode and replace `com.example.devicehub` with your registered identifier. Push Notifications capability is declared for local APNs registration; actual remote delivery still requires a server-side APNs sender.
+Select an Apple Developer Team in Xcode and replace `com.dj1h.ios` with your registered identifier. Push Notifications capability is declared for local APNs registration; actual remote delivery still requires a server-side APNs sender.
 
 ## Current implementation status
 

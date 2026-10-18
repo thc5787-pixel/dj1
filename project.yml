@@ -48,7 +48,7 @@ targets:
           - UIInterfaceOrientationPortrait
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.example.devicehub
+        PRODUCT_BUNDLE_IDENTIFIER: com.dj1h.ios
         CODE_SIGN_ENTITLEMENTS: DJ1H/SupportingFiles/DJ1H.entitlements
         TARGETED_DEVICE_FAMILY: "1"
         SWIFT_STRICT_CONCURRENCY: complete
