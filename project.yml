@@ -31,7 +31,7 @@ targets:
     info:
       path: DeviceHub/SupportingFiles/Info.plist
       properties:
-        CFBundleDisplayName: DeviceHub
+        CFBundleDisplayName: DJ1H
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         LSRequiresIPhoneOS: true
