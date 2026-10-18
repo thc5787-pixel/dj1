@@ -27,7 +27,7 @@ jobs:
           set -o pipefail
           COMMON_ARGS=(
             -project DeviceHub.xcodeproj
-            -target DeviceHub
+            -scheme DeviceHub
             -configuration Debug
             -sdk iphoneos
             -destination 'generic/platform=iOS'
@@ -41,10 +41,10 @@ jobs:
           if xcodebuild "${COMMON_ARGS[@]}" IPHONEOS_DEPLOYMENT_TARGET=27.0 build 2>&1 | tee build-ios27.log; then
             echo "BUILD_TARGET=27.0" >> "$GITHUB_ENV"
           else
-            echo "iOS 27 SDK unavailable on this runner; retrying with 17.0"
+            echo "iOS 27 SDK unavailable on this runner; retrying against the installed SDK"
             rm -rf build
-            xcodebuild "${COMMON_ARGS[@]}" IPHONEOS_DEPLOYMENT_TARGET=17.0 build 2>&1 | tee build-ios17.log
-            echo "BUILD_TARGET=17.0" >> "$GITHUB_ENV"
+            xcodebuild "${COMMON_ARGS[@]}" IPHONEOS_DEPLOYMENT_TARGET=26.0 build 2>&1 | tee build-ios26.log
+            echo "BUILD_TARGET=26.0" >> "$GITHUB_ENV"
           fi
 
       - name: Package unsigned IPA
