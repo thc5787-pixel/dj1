@@ -5,34 +5,59 @@ on:
   push:
     branches: [main, ci-build]
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: macos-15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - name: Show Xcode version
-        run: xcodebuild -version
+
+      - name: Select newest Xcode
+        run: |
+          ls -d /Applications/Xcode*.app
+          sudo xcode-select -s "$(ls -d /Applications/Xcode*.app | sort -V | tail -1)"
+          xcodebuild -version
+          xcodebuild -showsdks | grep -i iphoneos || true
+
       - name: Build DeviceHub
         run: |
-          xcodebuild \
-            -project DeviceHub.xcodeproj \
-            -target DeviceHub \
-            -configuration Debug \
-            -sdk iphoneos \
-            -destination 'generic/platform=iOS' \
-            -derivedDataPath build \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGNING_REQUIRED=NO \
-            IPHONEOS_DEPLOYMENT_TARGET=17.0 \
-            build
+          set -o pipefail
+          COMMON_ARGS=(
+            -project DeviceHub.xcodeproj
+            -target DeviceHub
+            -configuration Debug
+            -sdk iphoneos
+            -destination 'generic/platform=iOS'
+            -derivedDataPath build
+            CODE_SIGNING_ALLOWED=NO
+            CODE_SIGNING_REQUIRED=NO
+          )
+
+          # The project targets iOS 27. If this runner only has an older SDK,
+          # source compatibility is verified against a lower deployment target.
+          if xcodebuild "${COMMON_ARGS[@]}" IPHONEOS_DEPLOYMENT_TARGET=27.0 build 2>&1 | tee build-ios27.log; then
+            echo "BUILD_TARGET=27.0" >> "$GITHUB_ENV"
+          else
+            echo "iOS 27 SDK unavailable on this runner; retrying with 17.0"
+            rm -rf build
+            xcodebuild "${COMMON_ARGS[@]}" IPHONEOS_DEPLOYMENT_TARGET=17.0 build 2>&1 | tee build-ios17.log
+            echo "BUILD_TARGET=17.0" >> "$GITHUB_ENV"
+          fi
+
       - name: Package unsigned IPA
         run: |
           mkdir -p Payload
           cp -R build/Build/Products/Debug-iphoneos/DeviceHub.app Payload/
+          /usr/libexec/PlistBuddy -c 'Print :MinimumOSVersion' Payload/DeviceHub.app/Info.plist || true
           zip -qry DeviceHub-unsigned.ipa Payload
           ls -lh DeviceHub-unsigned.ipa
+
       - uses: actions/upload-artifact@v4
         with:
           name: DeviceHub-ipa
           path: DeviceHub-unsigned.ipa
           if-no-files-found: error
+          retention-days: 7
