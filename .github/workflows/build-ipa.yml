@@ -1,0 +1,38 @@
+name: Build unsigned IPA
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, ci-build]
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show Xcode version
+        run: xcodebuild -version
+      - name: Build DeviceHub
+        run: |
+          xcodebuild \
+            -project DeviceHub.xcodeproj \
+            -target DeviceHub \
+            -configuration Debug \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            IPHONEOS_DEPLOYMENT_TARGET=17.0 \
+            build
+      - name: Package unsigned IPA
+        run: |
+          mkdir -p Payload
+          cp -R build/Build/Products/Debug-iphoneos/DeviceHub.app Payload/
+          zip -qry DeviceHub-unsigned.ipa Payload
+          ls -lh DeviceHub-unsigned.ipa
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DeviceHub-ipa
+          path: DeviceHub-unsigned.ipa
+          if-no-files-found: error
