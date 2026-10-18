@@ -1,6 +1,6 @@
 import XCTest
 
-final class DeviceHubUITests: XCTestCase {
+final class DJ1HUITests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
     }

@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "44728CDE26C9D12882F47E94"
-               BuildableName = "DeviceHub.app"
-               BlueprintName = "DeviceHub"
-               ReferencedContainer = "container:DeviceHub.xcodeproj">
+               BlueprintIdentifier = "F00D8C390BFAA7BEA63F551C"
+               BuildableName = "DJ1H.app"
+               BlueprintName = "DJ1H"
+               ReferencedContainer = "container:DJ1H.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "44728CDE26C9D12882F47E94"
-            BuildableName = "DeviceHub.app"
-            BlueprintName = "DeviceHub"
-            ReferencedContainer = "container:DeviceHub.xcodeproj">
+            BlueprintIdentifier = "F00D8C390BFAA7BEA63F551C"
+            BuildableName = "DJ1H.app"
+            BlueprintName = "DJ1H"
+            ReferencedContainer = "container:DJ1H.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -44,10 +44,10 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "91D2356888F7A3539C9D6320"
-               BuildableName = "DeviceHubTests.xctest"
-               BlueprintName = "DeviceHubTests"
-               ReferencedContainer = "container:DeviceHub.xcodeproj">
+               BlueprintIdentifier = "7DE38AB0F6639AA3117344F1"
+               BuildableName = "DJ1HTests.xctest"
+               BlueprintName = "DJ1HTests"
+               ReferencedContainer = "container:DJ1H.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -55,10 +55,10 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E9A870C631BD7ED1A6A2D0F5"
-               BuildableName = "DeviceHubUITests.xctest"
-               BlueprintName = "DeviceHubUITests"
-               ReferencedContainer = "container:DeviceHub.xcodeproj">
+               BlueprintIdentifier = "9044CF2C9D821215E490A48F"
+               BuildableName = "DJ1HUITests.xctest"
+               BlueprintName = "DJ1HUITests"
+               ReferencedContainer = "container:DJ1H.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -79,10 +79,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "44728CDE26C9D12882F47E94"
-            BuildableName = "DeviceHub.app"
-            BlueprintName = "DeviceHub"
-            ReferencedContainer = "container:DeviceHub.xcodeproj">
+            BlueprintIdentifier = "F00D8C390BFAA7BEA63F551C"
+            BuildableName = "DJ1H.app"
+            BlueprintName = "DJ1H"
+            ReferencedContainer = "container:DJ1H.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -98,10 +98,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "44728CDE26C9D12882F47E94"
-            BuildableName = "DeviceHub.app"
-            BlueprintName = "DeviceHub"
-            ReferencedContainer = "container:DeviceHub.xcodeproj">
+            BlueprintIdentifier = "F00D8C390BFAA7BEA63F551C"
+            BuildableName = "DJ1H.app"
+            BlueprintName = "DJ1H"
+            ReferencedContainer = "container:DJ1H.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>

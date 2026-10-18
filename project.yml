@@ -1,4 +1,4 @@
-name: DeviceHub
+name: DJ1H
 options:
   bundleIdPrefix: com.example
   deploymentTarget:
@@ -6,7 +6,7 @@ options:
 settings:
   base:
     SWIFT_VERSION: "6.0"
-    PRODUCT_NAME: DeviceHub
+    PRODUCT_NAME: DJ1H
     MARKETING_VERSION: "1.0"
     CURRENT_PROJECT_VERSION: "1"
     DEVELOPMENT_LANGUAGE: zh-Hans
@@ -17,19 +17,19 @@ configs:
   Staging: debug
   Release: release
 targets:
-  DeviceHub:
+  DJ1H:
     type: application
     platform: iOS
     deploymentTarget: "27.0"
     sources:
-      - path: DeviceHub
+      - path: DJ1H
         excludes:
           - "Resources"
           - "SupportingFiles"
-      - path: DeviceHub/Resources
+      - path: DJ1H/Resources
         buildPhase: resources
     info:
-      path: DeviceHub/SupportingFiles/Info.plist
+      path: DJ1H/SupportingFiles/Info.plist
       properties:
         CFBundleDisplayName: DJ1H
         CFBundleShortVersionString: $(MARKETING_VERSION)
@@ -49,7 +49,7 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.example.devicehub
-        CODE_SIGN_ENTITLEMENTS: DeviceHub/SupportingFiles/DeviceHub.entitlements
+        CODE_SIGN_ENTITLEMENTS: DJ1H/SupportingFiles/DJ1H.entitlements
         TARGETED_DEVICE_FAMILY: "1"
         SWIFT_STRICT_CONCURRENCY: complete
       configs:
@@ -57,32 +57,32 @@ targets:
           base:
             SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
     configFiles:
-      Debug: DeviceHub/SupportingFiles/Debug.xcconfig
-      Staging: DeviceHub/SupportingFiles/Staging.xcconfig
-      Release: DeviceHub/SupportingFiles/Release.xcconfig
+      Debug: DJ1H/SupportingFiles/Debug.xcconfig
+      Staging: DJ1H/SupportingFiles/Staging.xcconfig
+      Release: DJ1H/SupportingFiles/Release.xcconfig
     scheme:
       testTargets:
-        - DeviceHubTests
-        - DeviceHubUITests
-  DeviceHubTests:
+        - DJ1HTests
+        - DJ1HUITests
+  DJ1HTests:
     type: bundle.unit-test
     platform: iOS
     deploymentTarget: "27.0"
     sources:
-      - path: DeviceHubTests
+      - path: DJ1HTests
     settings:
       base:
         GENERATE_INFOPLIST_FILE: YES
     dependencies:
-      - target: DeviceHub
-  DeviceHubUITests:
+      - target: DJ1H
+  DJ1HUITests:
     type: bundle.ui-testing
     platform: iOS
     deploymentTarget: "27.0"
     sources:
-      - path: DeviceHubUITests
+      - path: DJ1HUITests
     settings:
       base:
         GENERATE_INFOPLIST_FILE: YES
     dependencies:
-      - target: DeviceHub
+      - target: DJ1H

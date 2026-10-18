@@ -1,7 +1,7 @@
 import XCTest
-@testable import DeviceHub
+@testable import DJ1H
 
-final class DeviceHubTests: XCTestCase {
+final class DJ1HTests: XCTestCase {
     func testServerConfigurationAcceptsHTTPS() throws {
         let configuration = try ServerConfiguration(rawValue: "https://server.example.com/api")
         XCTAssertEqual(configuration.baseURL.host, "server.example.com")
@@ -26,7 +26,7 @@ final class DeviceHubTests: XCTestCase {
 
     @MainActor
     func testServerSettingsPersistValidation() {
-        let defaults = UserDefaults(suiteName: "DeviceHubTests.\(UUID().uuidString)")!
+        let defaults = UserDefaults(suiteName: "DJ1HTests.\(UUID().uuidString)")!
         let store = ServerSettingsStore(storage: defaults)
         store.draftURL = "http://public.example.com"
         store.save()

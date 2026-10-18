@@ -22,12 +22,12 @@ jobs:
           xcodebuild -version
           xcodebuild -showsdks | grep -i iphoneos || true
 
-      - name: Build DeviceHub
+      - name: Build DJ1H
         run: |
           set -o pipefail
           COMMON_ARGS=(
-            -project DeviceHub.xcodeproj
-            -scheme DeviceHub
+            -project DJ1H.xcodeproj
+            -scheme DJ1H
             -configuration Debug
             -sdk iphoneos
             -destination 'generic/platform=iOS'
@@ -50,14 +50,14 @@ jobs:
       - name: Package unsigned IPA
         run: |
           mkdir -p Payload
-          cp -R build/Build/Products/Debug-iphoneos/DeviceHub.app Payload/
-          /usr/libexec/PlistBuddy -c 'Print :MinimumOSVersion' Payload/DeviceHub.app/Info.plist || true
-          zip -qry DeviceHub-unsigned.ipa Payload
-          ls -lh DeviceHub-unsigned.ipa
+          cp -R build/Build/Products/Debug-iphoneos/DJ1H.app Payload/
+          /usr/libexec/PlistBuddy -c 'Print :MinimumOSVersion' Payload/DJ1H.app/Info.plist || true
+          zip -qry DJ1H-unsigned.ipa Payload
+          ls -lh DJ1H-unsigned.ipa
 
       - uses: actions/upload-artifact@v4
         with:
-          name: DeviceHub-ipa
-          path: DeviceHub-unsigned.ipa
+          name: DJ1H-ipa
+          path: DJ1H-unsigned.ipa
           if-no-files-found: error
           retention-days: 7

@@ -2,7 +2,7 @@ import SwiftUI
 
 @main
 @MainActor
-struct DeviceHubApp: App {
+struct DJ1HApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @State private var environment = AppEnvironment.live()
 

@@ -1,6 +1,6 @@
-# DeviceHub
+# DJ1H
 
-DeviceHub is a native Chinese-first iPhone client for managing the first-generation DJI 4G module (Baiwang/Quectel QDC507) through a VoHive/openvohive server.
+DJ1H is a native Chinese-first iPhone client for managing the first-generation DJI 4G module (Baiwang/Quectel QDC507) through a VoHive/openvohive server.
 
 An iPhone cannot control a QDC507 directly: the module exposes USB serial/AT, QMI and ADB interfaces over USB-C, and its call audio requires host-side drivers. The app therefore talks to VoHive, which owns the USB device and exposes device status and SMS over its authenticated HTTP API.
 
@@ -14,7 +14,7 @@ An iPhone cannot control a QDC507 directly: the module exposes USB serial/AT, QM
 
 ```sh
 xcodegen generate
-open DeviceHub.xcodeproj
+open DJ1H.xcodeproj
 ```
 
 Select an Apple Developer Team in Xcode and replace `com.example.devicehub` with your registered identifier. Push Notifications capability is declared for local APNs registration; actual remote delivery still requires a server-side APNs sender.
@@ -39,7 +39,7 @@ Select an Apple Developer Team in Xcode and replace `com.example.devicehub` with
 ## Test
 
 ```sh
-xcodebuild test -project DeviceHub.xcodeproj -scheme DeviceHub -destination 'platform=iOS Simulator,name=iPhone 17'
+xcodebuild test -project DJ1H.xcodeproj -scheme DJ1H -destination 'platform=iOS Simulator,name=iPhone 17'
 ```
 
 APNs registration must be checked on a physical device; Simulator execution is not evidence of push entitlement or delivery correctness.
