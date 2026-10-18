@@ -1,0 +1,88 @@
+name: DeviceHub
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: "27.0"
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    PRODUCT_NAME: DeviceHub
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_LANGUAGE: zh-Hans
+    ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+    ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+configs:
+  Debug: debug
+  Staging: debug
+  Release: release
+targets:
+  DeviceHub:
+    type: application
+    platform: iOS
+    deploymentTarget: "27.0"
+    sources:
+      - path: DeviceHub
+        excludes:
+          - "Resources"
+          - "SupportingFiles"
+      - path: DeviceHub/Resources
+        buildPhase: resources
+    info:
+      path: DeviceHub/SupportingFiles/Info.plist
+      properties:
+        CFBundleDisplayName: DeviceHub
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSRequiresIPhoneOS: true
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+        NSLocalNetworkUsageDescription: 连接局域网内的 VoHive 服务器，以读取 DJI 4G 模块状态并收发短信。
+        ServerBaseURL: $(SERVER_BASE_URL)
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UILaunchScreen: {}
+        UIRequiredDeviceCapabilities:
+          - arm64
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.devicehub
+        CODE_SIGN_ENTITLEMENTS: DeviceHub/SupportingFiles/DeviceHub.entitlements
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_STRICT_CONCURRENCY: complete
+      configs:
+        Debug:
+          base:
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+    configFiles:
+      Debug: DeviceHub/SupportingFiles/Debug.xcconfig
+      Staging: DeviceHub/SupportingFiles/Staging.xcconfig
+      Release: DeviceHub/SupportingFiles/Release.xcconfig
+    scheme:
+      testTargets:
+        - DeviceHubTests
+        - DeviceHubUITests
+  DeviceHubTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "27.0"
+    sources:
+      - path: DeviceHubTests
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: DeviceHub
+  DeviceHubUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "27.0"
+    sources:
+      - path: DeviceHubUITests
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: DeviceHub

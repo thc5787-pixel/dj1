@@ -1,0 +1,13 @@
+{
+  "sourceLanguage" : "zh-Hans",
+  "strings" : {
+    "设备" : { "localizations" : { "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "设备" } } } },
+    "已接入设备" : { "localizations" : { "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "已接入设备" } } } },
+    "服务状态" : { "localizations" : { "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "服务状态" } } } },
+    "管理服务器连接" : { "localizations" : { "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "管理服务器连接" } } } },
+    "消息" : { "localizations" : { "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "消息" } } } },
+    "电话" : { "localizations" : { "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "电话" } } } },
+    "助理" : { "localizations" : { "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "助理" } } } }
+  },
+  "version" : "1.0"
+}

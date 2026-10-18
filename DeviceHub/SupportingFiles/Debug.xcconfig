@@ -1,0 +1,3 @@
+// Local debug endpoints may be injected with -DSERVER_BASE_URL at launch.
+SERVER_BASE_URL =
+APS_ENVIRONMENT = development
